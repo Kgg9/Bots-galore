@@ -12,7 +12,7 @@ headers = {'User-Agent':ua.random}
 base = "https://api.genius.com/"
 ss = "search?q="
 Song = quote("free porn cheap drugs")
-token = "&access_token=1wsoiHas6wuszSvEKNWofVuD9NKiXnXXWzeuwayw3I56CIoGIakOv1ecbYzO4mfW"
+token = ""
 
 Qstring = base + ss + Song + token
 

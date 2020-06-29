@@ -4,10 +4,7 @@ from urllib.parse import quote
 from bs4 import BeautifulSoup
 import json
 import re
-from fake_useragent import UserAgent
 
-ua = UserAgent()
-headers = {'User-Agent':ua.random}
 
 base = "https://api.genius.com/"
 ss = "search?q="
@@ -55,14 +52,27 @@ def picking():
         print("Incorrect Number Bruh")
         return picking()'''
 
-SongURL = f"https://genius.com{picking()}"
 
-res_1 = requests.get(SongURL)
-soup = BeautifulSoup(res_1.text, "html5lib")
+SongURL = f"https://genius.com{picking()}{token}"
+Res_1 = requests.get(SongURL)
 
-lyrics = soup.find("div", class_="lyrics").get_text()
 
-print(lyrics)
+soup = BeautifulSoup(Res_1.text, "html5lib")
+
+
+
+while True:
+    try:
+        lyrics = soup.find("div", class_="lyrics").get_text()
+        print(lyrics)
+        break
+    except Exception:
+        print("Loading...")
+
+## Works But not the best, but yeah lyrics can be extracted
+
+
+
 
 
 
